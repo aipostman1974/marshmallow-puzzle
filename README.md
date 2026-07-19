@@ -189,4 +189,4 @@ It demonstrates how a product planner with a UI/UX background can use AI coding 
 
 This project is for demonstration and hackathon submission purposes.
 
-You may add an MIT License later if you want others to reuse or modify the code.
+You may add an MIT License later if you want others to reuse or modify the code. 
