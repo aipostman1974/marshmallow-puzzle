@@ -1,8 +1,10 @@
 # Marshmallow Puzzle
 
-A cheerful three-stage match-3 browser game featuring soft marshmallow characters, cookie crackers, ice cubes, combo chains, music, sound effects, and animated score feedback.
+Marshmallow Puzzle is a colorful casual browser game inspired by an everyday family moment.
 
-The project began with a simple moment: watching a child enjoy marshmallows with milk. That idea became a colorful puzzle game designed to feel friendly, playful, and easy to understand.
+The idea began while watching my child enjoy colorful cereal with milk. That small moment grew into a cheerful three-stage match-3 game featuring soft marshmallow characters, combo chains, cookie obstacles, ice challenges, music, sound effects, and animated score feedback.
+
+The game was designed to feel friendly, playful, and easy to understand for players of all ages.
 
 ## Play the Game
 
