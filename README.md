@@ -1,192 +1,193 @@
 # Marshmallow Puzzle
 
-A colorful three-stage match-3 browser game built with HTML, CSS, JavaScript, ChatGPT, and Codex.
+A cheerful three-stage match-3 browser game featuring soft marshmallow characters, cookie crackers, ice cubes, combo chains, music, sound effects, and animated score feedback.
 
-Marshmallow Puzzle began with a simple idea inspired by watching a child eat cereal with milk. That everyday moment became a soft, playful puzzle game featuring marshmallow characters, combo scoring, stage progression, cookie obstacles, and ice blocks.
+The project began with a simple moment: watching a child enjoy marshmallows with milk. That idea became a colorful puzzle game designed to feel friendly, playful, and easy to understand.
 
-## Live Demo
+## Play the Game
 
-Add your published game URL here.
+No installation or build process is required.
 
-```text
-https://YOUR-USERNAME.github.io/marshmallow-puzzle/
-```
+1. Download `index.html`.
+2. Open it in a modern browser such as Chrome, Edge, Firefox, or Safari.
+3. Select **START**.
 
-## Project Overview
-
-Players select a marshmallow block and swap it with an adjacent block.
-
-When three or more marshmallows of the same flavor are matched, they disappear, the score increases, and new blocks fall from the top to fill the empty spaces.
-
-The game contains three stages:
-
-- **Stage 1:** Classic marshmallow matching
-- **Stage 2:** Cookie obstacles that break when a nearby match is cleared
-- **Stage 3:** Ice obstacles that require two nearby hits before breaking
-
-Each stage provides 20 moves.
-
-## Main Features
-
-- Three-stage match-3 gameplay
-- 20 moves per stage
-- Score and best-score tracking
-- Combo scoring
-- Falling-block animations
-- Cookie and ice obstacle mechanics
-- Stage-clear and final-result screens
-- Play Again and Home options
-- Sound on/off control
-- Responsive desktop and mobile layout
-- Best score saved with Local Storage
-- Single-file browser game
+The illustrated title-screen background, styles, game logic, music, and sound effects are all contained in the HTML file.
 
 ## How to Play
 
-1. Select a marshmallow block.
-2. Select an adjacent block to swap it.
+1. Select a marshmallow.
+2. Select an adjacent marshmallow to swap them.
 3. Match three or more marshmallows of the same flavor.
-4. Create chain reactions to earn combo points.
-5. Complete all three stages before the game ends.
+4. Use nearby matches to damage cookie and ice obstacles.
+5. Complete each stage mission before running out of moves.
 
-## Stage Rules
+Every adjacent swap uses one move. If the swap does not create a match, the blocks return to their original positions with an error sound.
 
-### Stage 1: Classic Match
+## Board
 
-Match marshmallow blocks and earn as many points as possible.
+- Grid: 8 rows × 7 columns
+- Flavors: milk, berry, chocolate, caramel, and mint
+- Moves: 20 per stage
+- Initial matches are removed during board generation
+- If the board has no possible move, it is automatically shuffled
 
-### Stage 2: Cookie Challenge
+## Stages
 
-Cookie blocks cannot be moved.
+### Stage 1 — Marshmallow Match
 
-Clear marshmallow matches beside a cookie block to remove it.
+Play classic match-3 for 20 moves and build the highest score possible.
 
-### Stage 3: Ice Challenge
+### Stage 2 — Cookie Challenge
 
-Ice blocks cannot be moved.
+Six cookie blocks are placed on the board.
 
-Each ice block must be hit twice by nearby matches before it breaks.
+- Cookies cannot be selected or moved.
+- A match beside a cookie breaks it.
+- The stage clears as soon as every cookie is removed.
+- If moves reach zero while cookies remain, the stage fails and can be retried.
 
-## Built With
+### Stage 3 — Ice Challenge
+
+Seven ice blocks are placed on the board.
+
+- Ice cannot be selected or moved.
+- Each ice block requires two nearby match hits.
+- The first hit cracks the ice.
+- The second hit shatters it.
+- The stage clears as soon as every ice block is removed.
+- If moves reach zero while ice remains, the stage fails and can be retried.
+
+## Scoring
+
+| Action | Score |
+|---|---:|
+| Each matched marshmallow | 100 × combo chain |
+| Cookie removed | 150 bonus points |
+| Ice removed | 250 bonus points |
+| Remaining move after an early Stage 2 or 3 clear | 250 points |
+
+Example: clearing four marshmallows on the second chain awards `4 × 100 × 2 = 800` points before obstacle bonuses.
+
+The remaining-move bonus is displayed separately on the stage result screen. Best score is saved in browser Local Storage.
+
+## Combos
+
+- Matching four or more blocks displays a match-combo banner.
+- Consecutive automatic matches increase the chain multiplier.
+- Chain combos display `COMBO ×2`, `COMBO ×3`, and so on.
+- Combo score text is larger and uses stronger board-impact effects.
+- English combo voice feedback is included.
+
+## Visual Feedback
+
+- Animated block swapping
+- Failed swaps return to their original positions
+- Falling blocks squash and recover on landing
+- Subtle marshmallow breathing motion
+- Cookie shake and crumb particles
+- Ice floating, gleam, crack, and shatter particles
+- Large animated score numbers
+- Score-counting animation on result screens
+- Animated move-bonus badge
+- Stage and final confetti
+- Responsive desktop and mobile layout
+- Reduced-motion support through `prefers-reduced-motion`
+
+## Audio
+
+The game uses the Web Audio API and browser speech synthesis, so no external audio files are required.
+
+- Looping MIDI-style background music
+- Match and combo tones
+- Invalid-swap error sound
+- Cookie crunch and crumb sounds
+- Separate ice-crack and ice-shatter sounds
+- Dynamic pitch while result scores count upward
+- English mission-clear, mission-failed, final-clear, and combo voices
+- One sound button controls music, sound effects, and voice feedback
+
+Audio begins only after the player presses **START**, following browser autoplay requirements.
+
+## Title Screen
+
+The title screen includes a compressed WebP illustration embedded directly inside `index.html` as a Base64 data URI. The project therefore remains portable as a single playable HTML file.
+
+Selecting **HOW TO PLAY** opens a frosted overlay above the illustrated title screen without replacing the background.
+
+## Controls
+
+| Control | Action |
+|---|---|
+| Marshmallow block | Select or swap |
+| START | Begin a new game |
+| HOW TO PLAY | Open the instructions overlay |
+| Restart | Restart the current stage and restore its starting score |
+| Sound button | Toggle music, effects, and voices |
+| NEXT STAGE | Continue after a successful mission |
+| RETRY STAGE | Retry a failed mission |
+| PLAY AGAIN | Restart from Stage 1 |
+| HOME | Return to the title screen |
+
+## Technical Details
 
 - HTML5
-- CSS3
-- JavaScript
+- CSS3 animations and responsive layout
+- Vanilla JavaScript
+- Web Audio API
+- Web Speech API
 - Local Storage
-- ChatGPT
-- Codex
-
-## AI-Assisted Development
-
-ChatGPT and Codex were used to support the development process, including:
-
-- Structuring the match-3 game logic
-- Implementing block swapping and match detection
-- Building stage transitions
-- Creating cookie and ice obstacle mechanics
-- Improving responsive behavior
-- Adding score and combo feedback
-- Testing and fixing interaction bugs
-- Refining visual design and animations
-
-AI tools helped accelerate implementation, but the project still required repeated planning, testing, visual review, and product decisions.
-
-## Development Process
-
-The project was created through short iterative cycles:
-
-1. Define a feature
-2. Implement it
-3. Test the interaction
-4. Identify logic or visual issues
-5. Request a focused correction
-6. Test again
-
-This process was especially important for:
-
-- Preventing the board from shifting when a block was selected
-- Fixing stage transitions
-- Keeping the completed board visible behind result popups
-- Improving cookie and ice designs
-- Making blocks fall naturally from the top
-- Separating Play Again and Home behaviors
+- No libraries or frameworks
+- No network connection required after download
 
 ## Project Structure
 
-This project is currently packaged as a single HTML file.
-
 ```text
 marshmallow-puzzle/
-├── index.html
-└── README.md
+├── index.html   # Complete standalone game
+└── README.md    # Project documentation
 ```
 
-The HTML file contains all styles and JavaScript logic, so no build process is required.
-
-## Run Locally
-
-1. Download the project.
-2. Rename the final HTML file to `index.html`.
-3. Open `index.html` in Chrome, Edge, or another modern browser.
-
-No installation or server is required.
+`marshmallow-home-bg.png` may be retained as an editable source asset, but the game does not require it at runtime because the compressed image is embedded in `index.html`.
 
 ## Deploy with GitHub Pages
 
-1. Create a public GitHub repository.
+1. Create a GitHub repository.
 2. Upload `index.html` and `README.md`.
 3. Open **Settings → Pages**.
 4. Select **Deploy from a branch**.
-5. Choose the `main` branch and `/root`.
-6. Save and wait for the deployment URL.
+5. Select the `main` branch and `/root` folder.
+6. Save and open the generated Pages URL.
 
-## Challenges
+## AI-Assisted Development
 
-Key challenges included:
+ChatGPT and Codex supported the iterative development process, including:
 
-- Preventing layout movement during block selection
-- Managing stage completion and next-stage transitions
-- Resetting the game correctly after Play Again
-- Returning to the title screen with Home
-- Preserving the finished board behind result overlays
-- Making new blocks fall instead of appearing instantly
-- Designing obstacles that felt consistent with the marshmallow theme
-- Balancing the difficulty of cookie and ice stages
+- Match detection and cascade logic
+- Stage missions and retry behavior
+- Cookie and ice mechanics
+- Score balancing and move bonuses
+- Swap, falling, particle, and result animations
+- Procedural music and sound design
+- Voice feedback
+- Responsive UI refinement
+- Title-screen artwork generation and compression
+- Bug identification and validation
 
-## What I Learned
+The project was built through small cycles of implementation, play testing, visual review, and focused correction.
 
-This project showed that AI coding tools are most useful when requirements are clear and changes are requested in small, testable steps.
+## Future Ideas
 
-I also learned that successful AI-assisted development still depends on:
-
-- Product planning
-- UI/UX judgment
-- Repeated browser testing
-- Clear state management
-- Careful visual refinement
-- Player-focused feedback
-
-## Future Improvements
-
-- Stage mission counters
+- Special power-up marshmallows
 - Additional obstacle types
-- Special power-up blocks
-- Sound effects and background music
-- Difficulty settings
-- Daily challenges
-- Touch gestures for mobile
-- Accessibility options
-- Online leaderboards
-- AI-generated stage layouts
-
-## OpenAI Build Week
-
-This project was prepared as an entry for OpenAI Build Week.
-
-It demonstrates how a product planner with a UI/UX background can use AI coding tools to turn a small everyday idea into a complete playable browser game.
+- Stage mission counters
+- Difficulty modes
+- Touch-drag controls
+- More music themes
+- Additional stages and board layouts
+- Accessibility and volume controls
+- Online leaderboard support
 
 ## License
 
-This project is for demonstration and hackathon submission purposes.
-
-You may add an MIT License later if you want others to reuse or modify the code. 
+This project is currently intended for demonstration and personal use. Add a license such as MIT before redistributing it as an open-source project.
